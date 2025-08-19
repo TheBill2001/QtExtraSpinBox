@@ -1,0 +1,1 @@
+#include "QtExtraSpinBox/qint32spinbox.hpp" // IWYU pragma: export

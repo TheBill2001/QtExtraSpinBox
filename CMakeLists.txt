@@ -15,6 +15,8 @@ option(${PROJECT_NAME}_BUILD_STATIC  "Enable building QtExtraSpinBox static libr
 option(${PROJECT_NAME}_DEVEL         "Enable QtExtraSpinBox development mode" ${PROJECT_IS_TOP_LEVEL})
 option(${PROJECT_NAME}_BUILD_EXAMPLE "Enable building QtExtraSpinBox tests" ${PROJECT_IS_TOP_LEVEL})
 
+string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPERCASE)
+
 if(NOT DEFINED CMAKE_BUILD_TYPE AND NOT IS_MULTI)
     message(STATUS "No CMAKE_BUILD_TYPE set -- using Release")
     set(CMAKE_BUILD_TYPE Release)
@@ -76,17 +78,34 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif()
 
 check_type_size("int" SIZEOF_INT BUILTIN_TYPES_ONLY LANGUAGE CXX)
-if(SIZEOF_INT EQUAL 32)
-    list(APPEND ${PROJECT_NAME}_COMPILER_PUBLIC_DEFS ${PROJECT_NAME}_32_INT)
+if(SIZEOF_INT EQUAL 4)
+    list(APPEND ${PROJECT_NAME}_COMPILER_PUBLIC_DEFS ${PROJECT_NAME_UPPERCASE}_32BIT_INT)
 endif()
 
 set(${PROJECT_NAME}_PUBLIC_HEADERS
+    include/QtExtraSpinBox/qint32spinbox.hpp
+    include/QtExtraSpinBox/QInt32SpinBox
+
+    include/QtExtraSpinBox/quint32spinbox.hpp
+    include/QtExtraSpinBox/QUInt32SpinBox
+
+    include/QtExtraSpinBox/qint64spinbox.hpp
+    include/QtExtraSpinBox/QInt64SpinBox
+
+    include/QtExtraSpinBox/quint64spinbox.hpp
+    include/QtExtraSpinBox/QUInt64SpinBox
 )
 
 set(${PROJECT_NAME}_PRIVATE_HEADERS
+    src/QtExtraSpinBox/private/qextraspinbox_p.hpp
 )
 
 set(${PROJECT_NAME}_SOURCES
+    src/QtExtraSpinBox/qextraspinbox_p.cpp
+    src/QtExtraSpinBox/qint32spinbox.cpp
+    src/QtExtraSpinBox/quint32spinbox.cpp
+    src/QtExtraSpinBox/qint64spinbox.cpp
+    src/QtExtraSpinBox/quint64spinbox.cpp
 )
 
 if(${PROJECT_NAME}_BUILD_SHARED)
