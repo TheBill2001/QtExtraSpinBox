@@ -1,0 +1,26 @@
+@PACKAGE_INIT@
+
+set(_QtExtraSpinBox_supported_components "")
+
+if(@QtExtraSpinBox_BUILD_SHARED@)
+    list(APPEND _QtExtraSpinBox_supported_components shared)
+endif()
+
+if(@QtExtraSpinBox_BUILD_STATIC@)
+    list(APPEND _QtExtraSpinBox_supported_components static)
+endif()
+
+if(QtExtraSpinBox_FIND_COMPONENTS)
+    foreach(_comp ${QtExtraSpinBox_FIND_COMPONENTS})
+        if(NOT _comp IN_LIST _QtExtraSpinBox_supported_components)
+            set(QtExtraSpinBox_FOUND False)
+            set(QtExtraSpinBox_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
+        endif()
+
+        include("${CMAKE_CURRENT_LIST_DIR}/QtExtraSpinBox-${_comp}.cmake")
+    endforeach()
+else()
+    foreach(_component_config IN LISTS _QtExtraSpinBox_supported_components)
+        include("${CMAKE_CURRENT_LIST_DIR}/QtExtraSpinBox-${_component_config}.cmake")
+    endforeach()
+endif()
