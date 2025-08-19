@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
 #include "QtExtraSpinBox/quint32spinbox.hpp"
 
 #include "QtExtraSpinBox/private/qextraspinbox_p.hpp"

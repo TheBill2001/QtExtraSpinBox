@@ -1,5 +1,8 @@
-#ifndef QINT32SPINBOX_HPP
-#define QINT32SPINBOX_HPP
+// SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+#ifndef QEXTRASPINBOX_QINT32SPINBOX_HPP
+#define QEXTRASPINBOX_QINT32SPINBOX_HPP
 
 #ifdef QTEXTRASPINBOX_32BIT_INT
 #include <QSpinBox>
@@ -111,4 +114,4 @@ private:
 #endif // QTEXTRASPINBOX_32BIT_INT
 } // namespace QtExtraSpinBox
 
-#endif // QINT32SPINBOX_HPP
+#endif // QEXTRASPINBOX_QINT32SPINBOX_HPP
