@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-#ifndef QEXTRASPINBOX_P_H
-#define QEXTRASPINBOX_P_H
+#ifndef QTEXTRASPINBOXES_P_H
+#define QTEXTRASPINBOXES_P_H
 
 #include <optional>
 
@@ -19,7 +19,7 @@
 #include <QStyleOptionSpinBox>
 #include <QTimerEvent>
 
-#ifdef QTEXTRASPINBOX_QSBDEBUG
+#ifdef QTEXTRASPINBOXES_QSBDEBUG
 #define QSBDEBUG qDebug
 #else
 #define QSBDEBUG                                                                                                                                               \
@@ -30,7 +30,7 @@
 using namespace std::chrono_literals;
 using namespace Qt::Literals::StringLiterals;
 
-namespace QtExtraSpinBox
+namespace QtExtraSpinBoxes
 {
 enum EmitPolicy {
     EmitIfChanged,
@@ -1454,6 +1454,6 @@ void QExtraSpinBoxValidator<T>::fixup(QString &input) const
 {
     qptr->fixup(input);
 }
-} // namespace QtExtraSpinBox
+} // namespace QtExtraSpinBoxes
 
-#endif // QEXTRASPINBOX_P_H
+#endif // QTEXTRASPINBOXES_P_H

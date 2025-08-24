@@ -1,32 +1,41 @@
 // SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-#ifndef QEXTRASPINBOX_QINT64SPINBOX_HPP
-#define QEXTRASPINBOX_QINT64SPINBOX_HPP
+#ifndef QTEXTRASPINBOXES_QINT32SPINBOX_HPP
+#define QTEXTRASPINBOXES_QINT32SPINBOX_HPP
+
+#ifdef QTEXTRASPINBOXES_32BIT_INT
+#include <QSpinBox>
+#else
+#include <QtExtraSpinBoxes/qtextraspinboxes_export.hpp>
 
 #include <QAbstractSpinBox>
+#endif
 
-namespace QtExtraSpinBox
+namespace QtExtraSpinBoxes
 {
-class QInt64SpinBoxPrivate;
-class QInt64SpinBox : public QAbstractSpinBox
+#ifdef QTEXTRASPINBOXES_32BIT_INT
+using QInt32SpinBox = QSpinBox;
+#else
+class QInt32SpinBoxPrivate;
+class QTEXTRASPINBOXES_EXPORT QInt32SpinBox : public QAbstractSpinBox
 {
     Q_OBJECT
     Q_PROPERTY(QString suffix READ suffix WRITE setSuffix)
     Q_PROPERTY(QString prefix READ prefix WRITE setPrefix)
     Q_PROPERTY(QString cleanText READ cleanText)
-    Q_PROPERTY(QtExtraSpinBox::QInt64SpinBox::Type minimum READ minimum WRITE setMinimum)
-    Q_PROPERTY(QtExtraSpinBox::QInt64SpinBox::Type maximum READ maximum WRITE setMaximum)
-    Q_PROPERTY(QtExtraSpinBox::QInt64SpinBox::Type singleStep READ singleStep WRITE setSingleStep)
+    Q_PROPERTY(QtExtraSpinBoxes::QInt32SpinBox::Type minimum READ minimum WRITE setMinimum)
+    Q_PROPERTY(QtExtraSpinBoxes::QInt32SpinBox::Type maximum READ maximum WRITE setMaximum)
+    Q_PROPERTY(QtExtraSpinBoxes::QInt32SpinBox::Type singleStep READ singleStep WRITE setSingleStep)
     Q_PROPERTY(StepType stepType READ stepType WRITE setStepType)
-    Q_PROPERTY(QtExtraSpinBox::QInt64SpinBox::Type value READ value WRITE setValue NOTIFY valueChanged USER true)
+    Q_PROPERTY(QtExtraSpinBoxes::QInt32SpinBox::Type value READ value WRITE setValue NOTIFY valueChanged USER true)
     Q_PROPERTY(int displayIntegerBase READ displayIntegerBase WRITE setDisplayIntegerBase)
-    Q_DISABLE_COPY(QInt64SpinBox)
+    Q_DISABLE_COPY(QInt32SpinBox)
 public:
-    using Type = qint64;
+    using Type = qint32;
 
-    explicit QInt64SpinBox(QWidget *parent = nullptr);
-    ~QInt64SpinBox() override;
+    explicit QInt32SpinBox(QWidget *parent = nullptr);
+    ~QInt32SpinBox() override;
 
     QString cleanText() const;
 
@@ -65,11 +74,11 @@ public:
 
 public Q_SLOTS:
     void clear() override;
-    void setValue(QtExtraSpinBox::QInt64SpinBox::Type value);
+    void setValue(QtExtraSpinBoxes::QInt32SpinBox::Type value);
 
 Q_SIGNALS:
     void textChanged(const QString &text);
-    void valueChanged(QtExtraSpinBox::QInt64SpinBox::Type value);
+    void valueChanged(QtExtraSpinBoxes::QInt32SpinBox::Type value);
 
 protected:
     virtual QString textFromValue(Type value) const;
@@ -101,9 +110,10 @@ protected:
 #endif // QT_CONFIG(wheelevent)
 
 private:
-    Q_DECLARE_PRIVATE(QInt64SpinBox)
-    QScopedPointer<QInt64SpinBoxPrivate> d_ptr;
+    Q_DECLARE_PRIVATE(QInt32SpinBox)
+    QScopedPointer<QInt32SpinBoxPrivate> d_ptr;
 };
-} // namespace QtExtraSpinBox
+#endif // QTEXTRASPINBOXES_32BIT_INT
+} // namespace QtExtraSpinBoxes
 
-#endif // QEXTRASPINBOX_QINT64SPINBOX_HPP
+#endif // QTEXTRASPINBOXES_QINT32SPINBOX_HPP

@@ -1,0 +1,16 @@
+#ifndef QTEXTRASPINBOXES_EXPORT_HPP
+#define QTEXTRASPINBOXES_EXPORT_HPP
+
+#include <QtCore/QtGlobal>
+
+#ifdef QtExtraSpinBoxes_STATIC
+#define QTEXTRASPINBOXES_EXPORT
+#else
+#ifdef QtExtraSpinBoxes_LIBRARY
+#define QTEXTRASPINBOXES_EXPORT Q_DECL_EXPORT
+#else
+#define QTEXTRASPINBOXES_EXPORT Q_DECL_IMPORT
+#endif
+#endif
+
+#endif // QTEXTRASPINBOXES_EXPORT_HPP

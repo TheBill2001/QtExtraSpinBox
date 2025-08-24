@@ -3,6 +3,6 @@
 
 #include "private/qextraspinbox_p.hpp"
 
-namespace QtExtraSpinBox
+namespace QtExtraSpinBoxes
 {
-} // namespace QtExtraSpinBox
+} // namespace QtExtraSpinBoxes

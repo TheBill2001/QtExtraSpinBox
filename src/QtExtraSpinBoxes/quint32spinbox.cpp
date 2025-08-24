@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-#include "QtExtraSpinBox/quint32spinbox.hpp"
+#include "QtExtraSpinBoxes/quint32spinbox.hpp"
 
-#include "QtExtraSpinBox/private/qextraspinbox_p.hpp"
+#include "QtExtraSpinBoxes/private/qextraspinbox_p.hpp"
 
-namespace QtExtraSpinBox
+namespace QtExtraSpinBoxes
 {
 class QUInt32SpinBoxPrivate : public QExtraSpinBoxPrivate<QUInt32SpinBox::Type>
 {
@@ -346,4 +346,4 @@ void QUInt32SpinBox::wheelEvent(QWheelEvent *event)
     d->wheelEvent(event);
 }
 #endif // QT_CONFIG(wheelevent)
-} // namespace QtExtraSpinBox
+} // namespace QtExtraSpinBoxes

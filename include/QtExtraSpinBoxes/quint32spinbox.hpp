@@ -1,25 +1,27 @@
 // SPDX-FileCopyrightText: 2025 Trần Nam Tuấn <tuantran1632001@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-#ifndef QEXTRASPINBOX_QUINT32SPINBOX_HPP
-#define QEXTRASPINBOX_QUINT32SPINBOX_HPP
+#ifndef QTEXTRASPINBOXES_QUINT32SPINBOX_HPP
+#define QTEXTRASPINBOXES_QUINT32SPINBOX_HPP
+
+#include <QtExtraSpinBoxes/qtextraspinboxes_export.hpp>
 
 #include <QAbstractSpinBox>
 
-namespace QtExtraSpinBox
+namespace QtExtraSpinBoxes
 {
 class QUInt32SpinBoxPrivate;
-class QUInt32SpinBox : public QAbstractSpinBox
+class QTEXTRASPINBOXES_EXPORT QUInt32SpinBox : public QAbstractSpinBox
 {
     Q_OBJECT
     Q_PROPERTY(QString suffix READ suffix WRITE setSuffix)
     Q_PROPERTY(QString prefix READ prefix WRITE setPrefix)
     Q_PROPERTY(QString cleanText READ cleanText)
-    Q_PROPERTY(QtExtraSpinBox::QUInt32SpinBox::Type minimum READ minimum WRITE setMinimum)
-    Q_PROPERTY(QtExtraSpinBox::QUInt32SpinBox::Type maximum READ maximum WRITE setMaximum)
-    Q_PROPERTY(QtExtraSpinBox::QUInt32SpinBox::Type singleStep READ singleStep WRITE setSingleStep)
+    Q_PROPERTY(QtExtraSpinBoxes::QUInt32SpinBox::Type minimum READ minimum WRITE setMinimum)
+    Q_PROPERTY(QtExtraSpinBoxes::QUInt32SpinBox::Type maximum READ maximum WRITE setMaximum)
+    Q_PROPERTY(QtExtraSpinBoxes::QUInt32SpinBox::Type singleStep READ singleStep WRITE setSingleStep)
     Q_PROPERTY(StepType stepType READ stepType WRITE setStepType)
-    Q_PROPERTY(QtExtraSpinBox::QUInt32SpinBox::Type value READ value WRITE setValue NOTIFY valueChanged USER true)
+    Q_PROPERTY(QtExtraSpinBoxes::QUInt32SpinBox::Type value READ value WRITE setValue NOTIFY valueChanged USER true)
     Q_PROPERTY(int displayIntegerBase READ displayIntegerBase WRITE setDisplayIntegerBase)
     Q_DISABLE_COPY(QUInt32SpinBox)
 public:
@@ -65,11 +67,11 @@ public:
 
 public Q_SLOTS:
     void clear() override;
-    void setValue(QtExtraSpinBox::QUInt32SpinBox::Type value);
+    void setValue(QtExtraSpinBoxes::QUInt32SpinBox::Type value);
 
 Q_SIGNALS:
     void textChanged(const QString &text);
-    void valueChanged(QtExtraSpinBox::QUInt32SpinBox::Type value);
+    void valueChanged(QtExtraSpinBoxes::QUInt32SpinBox::Type value);
 
 protected:
     virtual QString textFromValue(Type value) const;
@@ -104,6 +106,6 @@ private:
     Q_DECLARE_PRIVATE(QUInt32SpinBox)
     QScopedPointer<QUInt32SpinBoxPrivate> d_ptr;
 };
-} // namespace QtExtraSpinBox
+} // namespace QtExtraSpinBoxes
 
-#endif // QEXTRASPINBOX_QUINT32SPINBOX_HPP
+#endif // QTEXTRASPINBOXES_QUINT32SPINBOX_HPP

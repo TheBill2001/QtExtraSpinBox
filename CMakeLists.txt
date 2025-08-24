@@ -3,17 +3,16 @@
 
 cmake_minimum_required(VERSION 3.23)
 
-project(QtExtraSpinBox
+project(QtExtraSpinBoxes
     LANGUAGES CXX
     VERSION 1.0.0
     DESCRIPTION "Extra Spin Box for Qt Widgets"
     HOMEPAGE_URL "https://github.com/TheBill2001/mease"
 )
 
-option(${PROJECT_NAME}_BUILD_SHARED  "Enable building QtExtraSpinBox shared library" ON)
-option(${PROJECT_NAME}_BUILD_STATIC  "Enable building QtExtraSpinBox static library" ON)
-option(${PROJECT_NAME}_DEVEL         "Enable QtExtraSpinBox development mode" ${PROJECT_IS_TOP_LEVEL})
-option(${PROJECT_NAME}_BUILD_EXAMPLE "Enable building QtExtraSpinBox tests" ${PROJECT_IS_TOP_LEVEL})
+option(${PROJECT_NAME}_BUILD_SHARED  "Enable building QtExtraSpinBoxes shared library" ON)
+option(${PROJECT_NAME}_BUILD_STATIC  "Enable building QtExtraSpinBoxes static library" ON)
+option(${PROJECT_NAME}_DEVEL         "Enable QtExtraSpinBoxes development mode" ${PROJECT_IS_TOP_LEVEL})
 
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPERCASE)
 
@@ -83,29 +82,31 @@ if(SIZEOF_INT EQUAL 4)
 endif()
 
 set(${PROJECT_NAME}_PUBLIC_HEADERS
-    include/QtExtraSpinBox/qint32spinbox.hpp
-    include/QtExtraSpinBox/QInt32SpinBox
+    include/${PROJECT_NAME}/qtextraspinboxes_export.hpp
 
-    include/QtExtraSpinBox/quint32spinbox.hpp
-    include/QtExtraSpinBox/QUInt32SpinBox
+    include/${PROJECT_NAME}/qint32spinbox.hpp
+    include/${PROJECT_NAME}/QInt32SpinBox
 
-    include/QtExtraSpinBox/qint64spinbox.hpp
-    include/QtExtraSpinBox/QInt64SpinBox
+    include/${PROJECT_NAME}/quint32spinbox.hpp
+    include/${PROJECT_NAME}/QUInt32SpinBox
 
-    include/QtExtraSpinBox/quint64spinbox.hpp
-    include/QtExtraSpinBox/QUInt64SpinBox
+    include/${PROJECT_NAME}/qint64spinbox.hpp
+    include/${PROJECT_NAME}/QInt64SpinBox
+
+    include/${PROJECT_NAME}/quint64spinbox.hpp
+    include/${PROJECT_NAME}/QUInt64SpinBox
 )
 
 set(${PROJECT_NAME}_PRIVATE_HEADERS
-    src/QtExtraSpinBox/private/qextraspinbox_p.hpp
+    src/${PROJECT_NAME}/private/qextraspinbox_p.hpp
 )
 
 set(${PROJECT_NAME}_SOURCES
-    src/QtExtraSpinBox/qextraspinbox_p.cpp
-    src/QtExtraSpinBox/qint32spinbox.cpp
-    src/QtExtraSpinBox/quint32spinbox.cpp
-    src/QtExtraSpinBox/qint64spinbox.cpp
-    src/QtExtraSpinBox/quint64spinbox.cpp
+    src/${PROJECT_NAME}/qextraspinbox_p.cpp
+    src/${PROJECT_NAME}/qint32spinbox.cpp
+    src/${PROJECT_NAME}/quint32spinbox.cpp
+    src/${PROJECT_NAME}/qint64spinbox.cpp
+    src/${PROJECT_NAME}/quint64spinbox.cpp
 )
 
 if(${PROJECT_NAME}_BUILD_SHARED)
@@ -135,7 +136,7 @@ if(${PROJECT_NAME}_BUILD_SHARED)
         PUBLIC
             ${${PROJECT_NAME}_COMPILER_PUBLIC_DEFS}
         PRIVATE
-            QTEXTRASPINBOX_LIBRARY
+            ${PROJECT_NAME}_LIBRARY
             ${${PROJECT_NAME}_COMPILER_PRIVATE_DEFS}
     )
 
@@ -167,7 +168,7 @@ if(${PROJECT_NAME}_BUILD_STATIC)
 
     target_compile_definitions(${PROJECT_NAME}Static
         PUBLIC
-            QTEXTRASPINBOX_STATIC_DEFINE
+            ${PROJECT_NAME}_STATIC
             ${${PROJECT_NAME}_COMPILER_PUBLIC_DEFS}
         PRIVATE
             ${${PROJECT_NAME}_COMPILER_PRIVATE_DEFS}
@@ -176,10 +177,6 @@ if(${PROJECT_NAME}_BUILD_STATIC)
     target_compile_options(${PROJECT_NAME}Static PRIVATE ${${PROJECT_NAME}_COMPILER_FLAGS})
 
     target_link_libraries(${PROJECT_NAME}Static PUBLIC Qt6::Widgets)
-endif()
-
-if(${PROJECT_NAME}_BUILD_EXAMPLE)
-    add_subdirectory(example)
 endif()
 
 if(PROJECT_IS_TOP_LEVEL)
